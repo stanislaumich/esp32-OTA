@@ -6,12 +6,16 @@
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <WebServer.h>
-#include <ESPmDNS.h>
+//#include <ESPmDNS.h>
 #include <Update.h>
 
 const char* host = "esp32-webupdate";
-const char* ssid = "SAN";
-const char* password = "37212628";
+//const char* ssid = "SAN";
+//const char* password = "37212628";
+
+const char* ssid = "ZTE54";
+const char* password = "121211119";
+
 IPAddress ip(192,168,1,233);  //Node static IP
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
@@ -26,7 +30,7 @@ void setup(void) {
   WiFi.config(ip, gateway, subnet);
   WiFi.begin(ssid, password);
   if (WiFi.waitForConnectResult() == WL_CONNECTED) {
-    MDNS.begin(host);
+    //MDNS.begin(host);
     Serial.println();
     IPAddress myIP = WiFi.softAPIP();
     Serial.print("AP IP address: ");
@@ -63,7 +67,7 @@ void setup(void) {
       }
     });
     server.begin();
-    MDNS.addService("http", "tcp", 80);
+    //MDNS.addService("http", "tcp", 80);
 
     Serial.printf("Ready! Open http://%s.local in your browser\n", host);
   } else {
