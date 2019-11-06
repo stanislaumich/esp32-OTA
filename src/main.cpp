@@ -28,7 +28,9 @@ void setup(void) {
   if (WiFi.waitForConnectResult() == WL_CONNECTED) {
     MDNS.begin(host);
     Serial.println();
-  //Serial.println(WiFi.IP);
+    IPAddress myIP = WiFi.softAPIP();
+    Serial.print("AP IP address: ");
+    кSerial.println(myIP);
     server.on("/", HTTP_GET, []() {
       server.sendHeader("Connection", "close");
       server.send(200, "text/html", serverIndex);
