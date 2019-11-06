@@ -30,7 +30,7 @@ void setup(void) {
     Serial.println();
     IPAddress myIP = WiFi.softAPIP();
     Serial.print("AP IP address: ");
-    кSerial.println(myIP);
+    Serial.println(myIP);
     server.on("/", HTTP_GET, []() {
       server.sendHeader("Connection", "close");
       server.send(200, "text/html", serverIndex);
