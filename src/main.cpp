@@ -23,7 +23,7 @@ WebServer server(80);
 const char* serverIndex = "<form method='POST' action='/update' enctype='multipart/form-data'><input type='file' name='update'><input type='submit' value='Update'></form>";
 
 void setup(void) {
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println();
   Serial.println("Booting Sketch...");
   WiFi.mode(WIFI_AP_STA);
@@ -69,7 +69,7 @@ void setup(void) {
     server.begin();
     //MDNS.addService("http", "tcp", 80);
 
-    Serial.printf("Ready! Open http://%s.local in your browser\n", host);
+    Serial.println("Ready! Open http://192.168.1.233 in your browser");
   } else {
     Serial.println("WiFi Failed");
   }
